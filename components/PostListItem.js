@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ExternalLink from 'heroicons/outline/external-link.svg';
 import ViewCounter from './ViewCounter';
 
 export default function PostListItem({ post, href, as }) {
@@ -56,7 +55,6 @@ function ExternalMark({ url }) {
   return (
     <span className="text-gray-600 dark:text-gray-300 whitespace-no-wrap block md:inline-block">
       <span className="text-xs md:ml-2">{new URL(url).host}</span>
-      <ExternalLink className="w-4 h-4 inline-block ml-1" />
     </span>
   );
 }
