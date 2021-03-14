@@ -1,5 +1,4 @@
 import { useFirebase } from '@/lib/use-firebase';
-import styles from '@/css/glances.module.css';
 import Heart from 'heroicons/solid/heart.svg';
 import Play from 'heroicons/solid/play.svg';
 import Photograph from 'heroicons/solid/photograph.svg';

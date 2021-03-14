@@ -5,7 +5,6 @@ import Share from 'heroicons/outline/share.svg';
 import { mergeClasses } from '@/lib/utils';
 import { useHearts } from '@/lib/use-hearts';
 import { useFirebase } from '@/lib/use-firebase';
-import styles from '@/css/glances.module.css';
 
 export default function Glance({ glance, className }) {
   if (!glance) return <Loading />;
