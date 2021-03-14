@@ -1,8 +1,6 @@
 import useDarkMode from 'use-dark-mode';
 import { useIsClient } from '@/lib/use-is-client';
 import Link from 'next/link';
-import Lightbulb from 'heroicons/outline/light-bulb.svg';
-import Moon from 'heroicons/outline/moon.svg';
 
 export default function Header() {
   return (
@@ -34,7 +32,7 @@ function DarkModeToggle() {
         onClick={darkMode.toggle}
         aria-label="Toggle light and dark mode"
       >
-        {darkMode.value ? <Lightbulb className={iconClasses} /> : <Moon className={iconClasses} />}
+        {darkMode.value ? '🌞' : '🌚'}
       </button>
     );
   }
