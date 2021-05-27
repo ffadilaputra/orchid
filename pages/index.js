@@ -24,8 +24,8 @@ export default function Home({ rafterPosts, barkpassPosts, posts }) {
   return (
     <div className="mt-8">
       <NextSeo
-        title="Ivan - Blog"
-        description="Seseorang yang menyebut dirinya sebagai seorang Pengembang Perangkat Lunak."
+        title="Flatburger"
+        description="Orang random di internet"
       />
       <div className="max-w-3xl mx-auto mb-6 p-4">
         <div className="mb-12">

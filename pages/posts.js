@@ -3,7 +3,6 @@ import { getPosts } from '@/lib/posts';
 import { NextSeo } from 'next-seo';
 import PostListItem from '@/components/PostListItem';
 import Heading from '@/components/Heading';
-import Link from 'next/link';
 
 export async function getStaticProps() {
   const posts = await getPosts();

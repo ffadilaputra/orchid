@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import ViewCounter from './ViewCounter';
 
 export default function PostListItem({ post, href, as }) {
   const isExternal = Boolean(post.externalUrl);
@@ -10,9 +9,8 @@ export default function PostListItem({ post, href, as }) {
         <div className="md:flex justify-between items-center">
           <div className="block text-lg font-semibold">
             <span className="align-middle">{post.title}</span>
-            {isExternal && <ExternalMark url={post.externalUrl} />}
           </div>
-          {!isExternal ? <ViewCounter id={post.nextPath} /> : <span></span>}
+          
         </div>
         <div>
           <time className="text-sm text-gray-500 dark:text-gray-300 mr-2" dateTime={post.date}>

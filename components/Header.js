@@ -11,9 +11,7 @@ export default function Header() {
 
       <nav className="flex items-center">
         <a href="https://karyakarsa.com/fflatburger">Traktir</a>
-        <NavItem href="/about">About</NavItem>
         <NavItem href="/posts">Posts</NavItem>
-        <NavItem href="/x">Portofolio</NavItem>
         <DarkModeToggle />
       </nav>
     </header>
