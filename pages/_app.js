@@ -16,6 +16,14 @@ export default function App({ Component, pageProps }) {
             Component.favicon ?? '📝'
           }</text></svg>`}
         ></link>
+        <meta name="google-site-verification" content="P0-5G2_d48eJ_IoaK_NGBS_uWUyjc3hY-qN3VpgT7ec" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XSRY00FWP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);
+          gtag('js', new Date());
+          gtag('config', 'G-1XSRY00FWP');
+        </script>
       </Head>
       <DefaultSeo {...SEO} />
 
