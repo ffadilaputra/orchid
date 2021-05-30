@@ -20,15 +20,23 @@ export default function App({ Component, pageProps }) {
           name="google-site-verification"
           content="P0-5G2_d48eJ_IoaK_NGBS_uWUyjc3hY-qN3VpgT7ec"
         />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-1XSRY00FWP"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-1XSRY00FWP');
-        </script>
+          src={`https://www.googletagmanager.com/gtag/js?id=G-1XSRY00FWP`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1XSRY00FWP', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Head>
       <DefaultSeo {...SEO} />
 
