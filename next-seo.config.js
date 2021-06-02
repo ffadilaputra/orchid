@@ -3,7 +3,7 @@ export default {
     type: "website",
     locale: "en_IE",
     url: "https://ffadilaputra.space/",
-    site_name: "Tulisan akhir zaman",
+    site_name: "Jurnal akhir zaman",
   },
   twitter: {
     handle: "@ffadilaputra",

@@ -1,15 +1,19 @@
-import Link from 'next/link';
-import { NextSeo } from 'next-seo';
+import Link from "next/link";
+import { NextSeo } from "next-seo";
 
-import { getRafterPosts } from '@/lib/rafter-posts';
-import { getBarkpassPosts } from '@/lib/barkpass-posts';
-import { getPosts } from '@/lib/posts';
+import { getRafterPosts } from "@/lib/rafter-posts";
+import { getBarkpassPosts } from "@/lib/barkpass-posts";
+import { getPosts } from "@/lib/posts";
 
-import Intro from '@/prose/intro.md';
-import PostListItem from '@/components/PostListItem';
+import Intro from "@/prose/intro.md";
+import PostListItem from "@/components/PostListItem";
 
 export async function getStaticProps() {
-  const [rafterPosts, barkpassPosts, posts] = await Promise.all([getRafterPosts(), getBarkpassPosts(), getPosts()]);
+  const [rafterPosts, barkpassPosts, posts] = await Promise.all([
+    getRafterPosts(),
+    getBarkpassPosts(),
+    getPosts(),
+  ]);
 
   return {
     props: {
@@ -24,7 +28,7 @@ export default function Home({ rafterPosts, barkpassPosts, posts }) {
   return (
     <div className="mt-8">
       <NextSeo
-        title="Flatburger"
+        title="Jurnal akhir zaman"
         description="Orang random di internet"
       />
       <div className="max-w-3xl mx-auto mb-6 p-4">
@@ -36,11 +40,20 @@ export default function Home({ rafterPosts, barkpassPosts, posts }) {
         </div>
         <ul className="mb-4">
           {posts.map((post) => {
-            return <PostListItem key={post.title} post={post} href="/posts/[slug]" as={`/posts/${post.nextPath}`} />;
+            return (
+              <PostListItem
+                key={post.title}
+                post={post}
+                href="/posts/[slug]"
+                as={`/posts/${post.nextPath}`}
+              />
+            );
           })}
         </ul>
         <Link href="/posts">
-          <a className="text-sm text-gray-600 dark:text-gray-300 font-medium">Archives</a>
+          <a className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+            Archives
+          </a>
         </Link>
 
         {/* <p className="mt-16 text-lg">
@@ -186,10 +199,22 @@ export default function Home({ rafterPosts, barkpassPosts, posts }) {
   );
 }
 
-function Project({ title, image, children, status, buttonUrl, buttonText, flipped = false }) {
+function Project({
+  title,
+  image,
+  children,
+  status,
+  buttonUrl,
+  buttonText,
+  flipped = false,
+}) {
   return (
-    <div className={`py-12 ${flipped ? 'bg-white dark:bg-gray-800' : ''}`}>
-      <div className={`max-w-5xl mx-auto px-4 md:px-0 md:flex ${flipped ? 'flex-row-reverse' : ''}`}>
+    <div className={`py-12 ${flipped ? "bg-white dark:bg-gray-800" : ""}`}>
+      <div
+        className={`max-w-5xl mx-auto px-4 md:px-0 md:flex ${
+          flipped ? "flex-row-reverse" : ""
+        }`}
+      >
         <div className="mb-8 md:mb-0 md:w-1/2 md:px-4">
           <div className="flex">
             <h2 className="inline-flex text-xl tracking-tight leading-10 font-bold sm:leading-none mr-4">
@@ -197,7 +222,9 @@ function Project({ title, image, children, status, buttonUrl, buttonText, flippe
             </h2>
             <ProjectBadge>{status}</ProjectBadge>
           </div>
-          <div className="mt-3 mb-3 text-base sm:mt-5 md:mt-5 md:mb-5">{children}</div>
+          <div className="mt-3 mb-3 text-base sm:mt-5 md:mt-5 md:mb-5">
+            {children}
+          </div>
           <span className="inline-flex rounded-md shadow-sm">
             <span className="inline-flex rounded-md shadow-sm">
               <a
@@ -215,7 +242,7 @@ function Project({ title, image, children, status, buttonUrl, buttonText, flippe
             className="shadow-xl"
             src={
               image ||
-              'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80'
+              "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80"
             }
             alt=""
           />
@@ -230,14 +257,14 @@ function ProjectBadge({ children }) {
 
   function getColor() {
     if (/progress/i.test(children)) {
-      return 'bg-yellow-100 text-yellow-800';
+      return "bg-yellow-100 text-yellow-800";
     }
 
     if (/launch/i.test(children)) {
-      return 'bg-green-100 text-green-800';
+      return "bg-green-100 text-green-800";
     }
 
-    return 'bg-gray-100 text-gray-800';
+    return "bg-gray-100 text-gray-800";
   }
 
   return (
@@ -249,4 +276,4 @@ function ProjectBadge({ children }) {
   );
 }
 
-Home.favicon = '🐵';
+Home.favicon = "🐵";
