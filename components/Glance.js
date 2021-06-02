@@ -1,6 +1,4 @@
 import Loading from "./Loading";
-import HeartOutline from "heroicons/outline/heart.svg";
-import HeartSolid from "heroicons/solid/heart.svg";
 import Share from "heroicons/outline/share.svg";
 import { mergeClasses } from "@/lib/utils";
 import { useHearts } from "@/lib/use-hearts";

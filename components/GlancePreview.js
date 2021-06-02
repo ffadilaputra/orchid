@@ -1,7 +1,5 @@
 import { useFirebase } from "@/lib/use-firebase";
-import Heart from "heroicons/solid/heart.svg";
 import Play from "heroicons/solid/play.svg";
-import Photograph from "heroicons/solid/photograph.svg";
 import styles from "@/css/glances.module.css";
 
 export default function GlancePreview({ glance }) {
