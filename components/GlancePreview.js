@@ -1,5 +1,4 @@
 import { useFirebase } from "@/lib/use-firebase";
-import Play from "heroicons/solid/play.svg";
 import styles from "@/css/glances.module.css";
 
 export default function GlancePreview({ glance }) {

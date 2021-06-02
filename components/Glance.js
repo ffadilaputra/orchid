@@ -1,5 +1,4 @@
 import Loading from "./Loading";
-import Share from "heroicons/outline/share.svg";
 import { mergeClasses } from "@/lib/utils";
 import { useHearts } from "@/lib/use-hearts";
 import { useFirebase } from "@/lib/use-firebase";
