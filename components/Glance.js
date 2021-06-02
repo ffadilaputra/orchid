@@ -1,15 +1,19 @@
-import Loading from './Loading';
-import HeartOutline from 'heroicons/outline/heart.svg';
-import HeartSolid from 'heroicons/solid/heart.svg';
-import Share from 'heroicons/outline/share.svg';
-import { mergeClasses } from '@/lib/utils';
-import { useHearts } from '@/lib/use-hearts';
-import { useFirebase } from '@/lib/use-firebase';
+import Loading from "./Loading";
+import HeartOutline from "heroicons/outline/heart.svg";
+import HeartSolid from "heroicons/solid/heart.svg";
+import Share from "heroicons/outline/share.svg";
+import { mergeClasses } from "@/lib/utils";
+import { useHearts } from "@/lib/use-hearts";
+import { useFirebase } from "@/lib/use-firebase";
+import styles from "@/css/glances.module.css";
 
 export default function Glance({ glance, className }) {
   if (!glance) return <Loading />;
 
-  const [totalLikes, likesLoading, setTotalLikes] = useFirebase('glance-likes', glance.slug);
+  const [totalLikes, likesLoading, setTotalLikes] = useFirebase(
+    "glance-likes",
+    glance.slug
+  );
   const [isLiked, toggleLiked] = useHearts(glance.slug, (delta) => {
     setTotalLikes(() => totalLikes + delta);
     toggleGlanceLike({
@@ -19,26 +23,25 @@ export default function Glance({ glance, className }) {
   });
 
   return (
-    <div className={mergeClasses('md:flex w-full', styles.glance, className)}>
+    <div className={mergeClasses("md:flex w-full", styles.glance, className)}>
       <div
         className="md:w-2/3 flex-grow-0 flex items-center justify-center bg-black overflow-hidden"
-        style={{ maxHeight: '95vh' }}
+        style={{ maxHeight: "95vh" }}
       >
         <GlanceMedia glance={glance} onDoubleClick={toggleLiked} />
       </div>
       <div className="md:w-1/3 flex-shrink-0 p-4 bg-white dark:bg-gray-800">
         <article className="flex flex-col justify-between h-full">
-          <div className="mb-2 prose text-sm" dangerouslySetInnerHTML={{ __html: glance.body }}></div>
+          <div
+            className="mb-2 prose text-sm"
+            dangerouslySetInnerHTML={{ __html: glance.body }}
+          ></div>
 
           <footer>
-            <GlanceActions
-              glance={glance}
-              totalLikes={totalLikes}
-              toggleLiked={toggleLiked}
-              likesLoading={likesLoading}
-              isLiked={isLiked}
-            />
-            <time className="text-xs text-gray-800 dark:text-gray-200" dateTime={glance.date}>
+            <time
+              className="text-xs text-gray-800 dark:text-gray-200"
+              dateTime={glance.date}
+            >
               {new Date(glance.date).toLocaleDateString()}
             </time>
           </footer>
@@ -49,10 +52,10 @@ export default function Glance({ glance, className }) {
 }
 
 function toggleGlanceLike(data) {
-  fetch('/api/toggle-glance-like', {
-    method: 'post',
+  fetch("/api/toggle-glance-like", {
+    method: "post",
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
     },
     body: JSON.stringify(data),
   });
@@ -64,7 +67,7 @@ function GlanceMedia({ glance, onDoubleClick }) {
   return (
     <img
       src={glance.image}
-      alt={glance.alt || 'A Glance from Josh Larson'}
+      alt={glance.alt || "A Glance from Josh Larson"}
       loading="lazy"
       onDoubleClick={onDoubleClick}
     />
@@ -84,7 +87,7 @@ function GlanceVideoMedia({ glance }) {
 }
 
 function YouTubeVideo({ glance }) {
-  const videoId = new URL(glance.video).searchParams.get('v');
+  const videoId = new URL(glance.video).searchParams.get("v");
 
   return (
     <iframe
@@ -99,7 +102,7 @@ function YouTubeVideo({ glance }) {
 }
 
 function VimeoVideo({ glance }) {
-  const videoId = new URL(glance.video).pathname.replace(/^\//, '');
+  const videoId = new URL(glance.video).pathname.replace(/^\//, "");
   return (
     <iframe
       src={`https://player.vimeo.com/video/${videoId}`}
@@ -113,16 +116,24 @@ function VimeoVideo({ glance }) {
   );
 }
 
-function GlanceActions({ glance, totalLikes, likesLoading, isLiked, toggleLiked }) {
+function GlanceActions({
+  glance,
+  totalLikes,
+  likesLoading,
+  isLiked,
+  toggleLiked,
+}) {
   if (likesLoading) return <p>...</p>;
 
   const likes = totalLikes || 0;
-  const label = likes === 1 ? 'time' : 'times';
+  const label = likes === 1 ? "time" : "times";
 
   const canShare = Boolean(navigator.share);
 
   async function share() {
-    const url = `https://${new URL(window.location).hostname}/glances/${glance.slug}`;
+    const url = `https://${new URL(window.location).hostname}/glances/${
+      glance.slug
+    }`;
     const glanceDate = new Date(glance.date).toDateString();
 
     try {

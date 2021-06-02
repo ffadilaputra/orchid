@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import { getArchivePosts, getArchivePost } from '@/lib/archive-posts';
-import Loading from '@/components/Loading';
-import ViewCounter from '@/components/ViewCounter';
+import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
+import { getArchivePosts, getArchivePost } from "@/lib/archive-posts";
+import Loading from "@/components/Loading";
+import ViewCounter from "@/components/ViewCounter";
 
 export async function getStaticProps({ params }) {
   const post = await getArchivePost(params);
@@ -52,7 +52,9 @@ export default function ArchivePost({ post }) {
           />
         )}
         <div className="mb-8 flex justify-between">
-          <time dateTime={new Date(post.date).toISOString()}>{new Date(post.date).toLocaleDateString()}</time>
+          <time dateTime={new Date(post.date).toISOString()}>
+            {new Date(post.date).toLocaleDateString()}
+          </time>
           <ViewCounter id={post.nextPath} shouldIncrement={true} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
