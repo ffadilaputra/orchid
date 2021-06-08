@@ -80,10 +80,7 @@ export default function Glances({ glances }) {
       <NextSeo title="Sodrek" />
       <Heading className="mb-8">Sodrek</Heading>
 
-      <p className="mb-8">
-        Kegiatan selain mantengin laptop. Berikut beberapa kumpulan hasil sodrek
-        dan galeri lama, yang katanya foto bisa menyampaikan pesan.
-      </p>
+      <p className="mb-8">Kumpulan momen & hasil sodrek.</p>
 
       {isScrollActive ? (
         <ul className="-mx-4 bg-white">

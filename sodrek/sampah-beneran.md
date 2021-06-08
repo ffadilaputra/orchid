@@ -1,5 +1,5 @@
 ---
-date: 2020-04-29
+date: 2020-01-01
 image: /sodrek/sampah-masyarakat.JPG
 ---
 
